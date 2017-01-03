@@ -95,16 +95,30 @@
 
 
       function appendDrop () {
-        console.log("this is append drop")
         var drop = document.createElement("div");
 
         drop.setAttribute("id", "drop");
-        var randomSpot = Math.random() * rainContainerWidth;
+        // console.log("this is rainContainerWidth", rainContainerWidth)
+        var randomSpot = Math.random() * (rainContainerWidth - 50);
+        // console.log("this is append drop RANDOM SPOT", randomSpot)
         drop.style.left = randomSpot + 'px';
         cloud.appendChild(drop);
       }
 
       setInterval (appendDrop, 500);
+
+      function getRandomNumber () {
+        return Math.floor(Math.random() * 4) + 1;
+      }
+
+      setInterval(function () {
+        count = 0;
+        var randomNumber = 2;
+        while (count < randomNumber) {
+          count++;
+          appendDrop();
+        }
+      }, 500)
 
       //Array of Drops
       // var drops = document.getElementsByClassName('drop')
